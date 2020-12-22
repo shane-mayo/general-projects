@@ -1,9 +1,21 @@
-package numberguessinggame;
+package game.guessing.number;
 
 import javax.swing.*;
 import javax.swing.text.StyledEditorKit;
 import java.awt.*;
 import java.util.concurrent.Flow;
+
+/**
+ * The GUI for the number guessing game will include information about:
+ *      Player score --> lowest number of guesses during current gaming session
+ *      Number of player guesses for current round
+ *      Parameter text --> "Choose number between 1 - 100"
+ *      A button to submit the guess
+ *      A button to play the game --> either first starting, or playing again
+ *      A button to quit the game --> simply exits the game using System.exit(0)
+ *      An image that is related to making a guess
+ *      Text that displays dependent on the player guess being higher or lower than the number to guess
+ */
 
 public class GuessingGameGUI {
 
@@ -54,10 +66,10 @@ public class GuessingGameGUI {
                 .addComponent(scoreLB)
                 .addComponent(scoreTF, 50, 50, 50)
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
-                    .addComponent(gameTitleLB)
-                    .addComponent(parameterLB)
-                    .addComponent(guessTF, 50, 50, 50)
-                    .addComponent(guessBT));
+                        .addComponent(gameTitleLB)
+                        .addComponent(parameterLB)
+                        .addComponent(guessTF, 50, 50, 50)
+                        .addComponent(guessBT));
         layout.setHorizontalGroup(hResults);
 
         // create the vertical results group
@@ -67,10 +79,10 @@ public class GuessingGameGUI {
                 .addComponent(scoreLB)
                 .addComponent(scoreTF)
                 .addGroup(layout.createSequentialGroup().addGap(35)
-                    .addComponent(gameTitleLB).addGap(15)
-                    .addComponent(parameterLB).addGap(15)
-                    .addComponent(guessTF, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE).addGap(15)
-                    .addComponent(guessBT, 30, 30, 30));
+                        .addComponent(gameTitleLB).addGap(15)
+                        .addComponent(parameterLB).addGap(15)
+                        .addComponent(guessTF, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE).addGap(15)
+                        .addComponent(guessBT, 30, 30, 30));
         layout.setVerticalGroup(vResults);
 
 
@@ -88,3 +100,4 @@ public class GuessingGameGUI {
         new GuessingGameGUI();
     }
 }
+
