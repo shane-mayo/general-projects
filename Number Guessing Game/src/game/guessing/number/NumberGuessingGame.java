@@ -37,7 +37,7 @@ public class NumberGuessingGame {
     // 1 to play
     // 9 to quit
     public static void main(String[] args) {
-        new NumberGuessingGame();
+        new GuessingGameGUI();
     }
 
     public NumberGuessingGame() {

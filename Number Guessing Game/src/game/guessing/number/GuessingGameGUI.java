@@ -23,7 +23,6 @@ public class GuessingGameGUI {
 
         JFrame frame = new JFrame("Number Guessing Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.setSize(600, 400);
 
         // main content panel
         JPanel contentPanel = new JPanel();
@@ -32,72 +31,98 @@ public class GuessingGameGUI {
         GroupLayout layout = new GroupLayout(contentPanel);
         contentPanel.setLayout(layout);
 
-        // turn on auto-gaps between components
+        // make padding and margins automatic
         layout.setAutoCreateGaps(true);
-
-        // automatically create gaps between components that touch the edge
-        // of the container and the container
         layout.setAutoCreateContainerGaps(true);
 
         // Results section of game view --> Upper left portion of view --> score tracking, num of guesses tracking
         // guesses tf and label
         JTextField numGuessesTF = new JTextField(5);
         numGuessesTF.setEnabled(false);
-        JLabel numGuessesLB = new JLabel("Guesses: ");
+        JLabel numGuessesLB = new JLabel("Guesses");
         // score tf and label
         JTextField scoreTF = new JTextField(5);
         scoreTF.setEnabled(false);
-        JLabel scoreLB = new JLabel("Score: ");
+        JLabel scoreLB = new JLabel("Best Score");
 
         // game title label
         JLabel gameTitleLB = new JLabel("Number Guessing Game");
         gameTitleLB.setForeground(Color.RED);
-        gameTitleLB.setFont(new Font("Sans-Serif", Font.BOLD, 20));
+        gameTitleLB.setFont(new Font("Sans-Serif", Font.BOLD, 28));
+
         // player guess components
         JLabel parameterLB = new JLabel("Pick a number between 1 - 100");
         JTextField guessTF = new JTextField();
         JButton guessBT = new JButton("Submit Guess");
 
+        // play and quit buttons
+        JButton playBT = new JButton("Play");
+        JButton quitBT = new JButton("Quit");
+
+        JLabel guessStatusLB = new JLabel("Placeholder Text"); // no default descriptor will change depending on the user guess
+
 
         // create the horizontal results group
-        GroupLayout.SequentialGroup hResults = layout.createSequentialGroup();
-        hResults.addComponent(numGuessesLB)
+        layout.setHorizontalGroup(
+                layout.createSequentialGroup()
+                .addComponent(numGuessesLB)
+                    .addGap(5)
                 .addComponent(numGuessesTF, 50, 50, 50)
                 .addComponent(scoreLB)
+                        .addGap(5)
                 .addComponent(scoreTF, 50, 50, 50)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+                .addGroup(
+                        layout.createParallelGroup(GroupLayout.Alignment.CENTER)
                         .addComponent(gameTitleLB)
                         .addComponent(parameterLB)
-                        .addComponent(guessTF, 50, 50, 50)
-                        .addComponent(guessBT));
-        layout.setHorizontalGroup(hResults);
+                        .addComponent(guessTF, 60, 60, 60)
+                        .addComponent(guessBT)
+                        .addGroup(
+                                layout.createSequentialGroup()
+                                .addComponent(playBT, 100, 100, 100)
+                                        .addGap(20)
+                                .addComponent(quitBT, 100, 100, 100)
+                        )
+                )
+        );
 
         // create the vertical results group
-        GroupLayout.ParallelGroup vResults = layout.createParallelGroup(GroupLayout.Alignment.BASELINE);
-        vResults.addComponent(numGuessesLB)
-                .addComponent(numGuessesTF)
+        layout.setVerticalGroup(
+                layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                .addComponent(numGuessesLB)
+                .addComponent(numGuessesTF, 25, 25, 25)
                 .addComponent(scoreLB)
-                .addComponent(scoreTF)
-                .addGroup(layout.createSequentialGroup().addGap(35)
-                        .addComponent(gameTitleLB).addGap(15)
-                        .addComponent(parameterLB).addGap(15)
-                        .addComponent(guessTF, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE).addGap(15)
-                        .addComponent(guessBT, 30, 30, 30));
-        layout.setVerticalGroup(vResults);
+                .addComponent(scoreTF, 25, 25, 25)
+                .addGroup(
+                        // starting from the game title and vertically positioning one after another
+                        layout.createSequentialGroup()
+                                .addGap(25)
+                        .addComponent(gameTitleLB)
+                                .addGap(30)
+                        .addComponent(parameterLB)
+                                .addGap(10)
+                        .addComponent(guessTF, 25, 25, 25)
+                                .addGap(10)
+                        .addComponent(guessBT, 35, 35, 35)
+                                .addGap(45)
+                        .addGroup(
+                                layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(playBT)
+                                .addComponent(quitBT)
+                                .addGap(65)
+                        )
+                )
+        );
 
 
-
-        // add panels to the frame
+        // content to the frame
         frame.setContentPane(contentPanel);
 
         // Only use pack when you have other components added to the frame
         frame.pack();
+        frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        new GuessingGameGUI();
     }
 }
 
