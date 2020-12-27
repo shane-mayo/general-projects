@@ -3,7 +3,7 @@ package game.guessing.number;
 import java.util.Scanner;
 
 /**
- * @Author Shane Mayo
+ * @author Shane Mayo
  *
  * Number Guessing Game
  * --------------------------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ public class NumberGuessingGame {
     // 1 to play
     // 9 to quit
     public static void main(String[] args) {
-        new GuessingGameGUI();
+//        new GuessingGameView(new GuessingGameModel);
     }
 
     public NumberGuessingGame() {
@@ -116,7 +116,7 @@ public class NumberGuessingGame {
             } else if (userGuess < numToGuess) {
                 System.out.println("The number to guess is greater than " + userGuess + ".");
                 guesses++;
-            } else if (userGuess > numToGuess) {
+            } else {
                 System.out.println("The number to guess is less than " + userGuess + ".");
                 guesses++;
             }
