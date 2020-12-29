@@ -2,6 +2,10 @@ package game.guessing.number;
 
 import javax.swing.*;
 
+/**
+ * The GuessingGameMain class initializes a new game
+ */
+
 public class GuessingGameMain {
 
     public static void main(String[] args) {
@@ -15,8 +19,8 @@ public class GuessingGameMain {
                 view.registerListener(controller);
 
                 view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                view.pack();
                 view.setResizable(false);
+                view.pack();
                 view.setLocationRelativeTo(null);
                 view.setVisible(true);
             }

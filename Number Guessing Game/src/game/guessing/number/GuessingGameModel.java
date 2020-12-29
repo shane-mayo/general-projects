@@ -1,14 +1,13 @@
 package game.guessing.number;
 
+/**
+ * @author Shane Mayo
+ * The GuessingGameModel class is representative of the data that the view must use in order
+ * to display information pertinent to the GUI.
+ */
+
 public class GuessingGameModel {
 
-    /*
-    Things to track:
-        bestScore
-        playerGuess
-        numberGuesses
-        numberToGuess
-     */
     private int bestScore;
     private int numberOfGuesses;
     private int numberToGuess;
@@ -18,21 +17,24 @@ public class GuessingGameModel {
         numberOfGuesses = 0;
     }
 
+    /**
+     * Checks the player guess to see if it is lower, higher or a winning number
+     * @param playerGuess A value representing the player guess
+     * @return A value representing if the guess is lower(-1), higher(1) or the winning number(0)
+     */
     public int checkGuess(int playerGuess) {
+        ++numberOfGuesses;
         if (playerGuess == numberToGuess) {
-            // player wins the game -- update the label
+            setBestScore(numberOfGuesses);
             return 0;
         } else if (playerGuess < numberToGuess) {
-            // player guess is lower than the number to guess
-            numberOfGuesses++;
             return -1;
         } else {
-            // player guess is higher than the number to guess
-            numberOfGuesses++;
             return 1;
         }
     }
 
+    // setters and getters start here
     public void setNumberToGuess(int numberToGuess) {
         this.numberToGuess = numberToGuess;
     }
@@ -49,10 +51,10 @@ public class GuessingGameModel {
         return bestScore;
     }
 
-    public void checkForBestScore(int score) {
-        setBestScore(score);
-    }
-
+    /**
+     * A method to check if the current score is better than the best score of the session
+     * @param score The current score that the player has, i.e. number of guesses for current session
+     */
     private void setBestScore(int score) {
         if (score < bestScore) {
             bestScore = score;
